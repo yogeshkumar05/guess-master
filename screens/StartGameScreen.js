@@ -6,13 +6,15 @@ import {
   TouchableWithoutFeedback,
   Button,
   Keyboard,
-  Alert
+  Alert,
+  Dimensions
 } from 'react-native';
 import Card from '../components/Cards';
 import COLORS from '../constants/colors';
 import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
 import defaultStyles from '../constants/defaultStyles';
+import MainButton from '../components/MainButton';
 
 const StartGameScreen = (props) => {
   const {
@@ -70,7 +72,9 @@ const StartGameScreen = (props) => {
       <NumberContainer>
         {selectedNumber}
       </NumberContainer>
-      <Button title='Start game' onPress={() => onStartGame(selectedNumber)}/>
+      <MainButton onPress={() => onStartGame(selectedNumber)}>
+        Start game
+      </MainButton>
     </Card>
     
   }
@@ -79,8 +83,9 @@ const StartGameScreen = (props) => {
     <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
     <View style={screen}>
       <Text style={defaultStyles.titleText}>Start a new game!</Text>
+      <Text style={defaultStyles.bodyText}>In this fun game, you select a number from 1 to 99 and your phone will guess it !!</Text>
       <Card style={inputContainer}>
-        <Text>Enter a number</Text>
+        <Text>Select a number</Text>
         <Input 
           style={input} 
           keyboardType='numeric'
@@ -113,6 +118,8 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: '80%',
+    minWidth: 300,
+    maxWidth: '95%', // for smaller devices
     alignItems: 'center',
   },
   buttonView: {
@@ -124,7 +131,7 @@ const styles = StyleSheet.create({
     width: '100%'
   },
   button: {
-    width: 90
+    width: Dimensions.get('window').width / 4
   },
   input: {
     width: 50,

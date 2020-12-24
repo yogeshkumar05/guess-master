@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "guess-a-number",
-    "slug": "guess-a-number",
+    "name": "Guess Master",
+    "slug": "Guess Master",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

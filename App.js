@@ -34,7 +34,7 @@ export default function App() {
 
   return (
     <View style={screen}>
-      <Header title='Guess a number' />
+      <Header title='Guess Master' />
       {content}
       <StatusBar style="auto" />
     </View>
