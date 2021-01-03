@@ -75,7 +75,8 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   highlight: {
-    color: COLORS.primaryColor
+    color: COLORS.primaryColor,
+    fontSize: 14
   }
 });
 

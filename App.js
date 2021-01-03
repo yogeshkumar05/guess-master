@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import Header from './components/Header';
 import StartGame from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
@@ -34,9 +33,9 @@ export default function App() {
 
   return (
     <View style={screen}>
+      <StatusBar hidden={true}/>
       <Header title='Guess Master' />
       {content}
-      <StatusBar style="auto" />
     </View>
   );
 }

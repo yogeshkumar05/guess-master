@@ -1,39 +1,44 @@
 {
   "expo": {
     "name": "Guess Master",
-    "slug": "Guess Master",
-    "description": "Number gusess game",
+    "slug": "guess-master",
+    "owner": "smart-apps",
+    "description": "A simple number guess game in which user selects a number and the phone guesses the selected number",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 2000
     },
-    "assetBundlePatterns": ["assets/*"],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
+      "bundleIdentifier": "com.smartgoals.guess-master",
+      "buildNumber": "1.0.0",
       "supportsTablet": true,
       "icon": "./assets/icon.png",
       "splash": {
         "image": "./assets/splash.png",
         "resizeMode": "contain",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#000000"
       }
     },
     "android": {
+      "package": "com.smartgoals.guess_master",
+      "versionCode": 1,
       "icon": "./assets/icon.png",
       "splash": {
         "image": "./assets/splash.png",
         "resizeMode": "contain",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#171717"
       },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#000000"
       }
     },
     "web": {

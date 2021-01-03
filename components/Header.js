@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   headerText: {
-    color: 'black',
-    fontSize: 18,
+    color: 'white',
+    fontSize: 22,
     fontWeight: 'bold'
   }
 })
