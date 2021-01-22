@@ -7,6 +7,9 @@ Phone will guess the number selected by user.
 # Deployment
 The app is deployed at https://expo.io/@smart-apps/projects/guess-master to test.
 
+# Download on Google play store
+https://play.google.com/store/apps/details?id=com.smartgoals.guess_master
+
 # Screenshots
 Splash screen
 ![Alt text](/screenshots/guess_master_1.png "Splash screen")
