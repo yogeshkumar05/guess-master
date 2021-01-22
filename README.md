@@ -8,7 +8,8 @@ Phone will guess the number selected by user.
 The app is deployed at https://expo.io/@smart-apps/projects/guess-master to test.
 
 # Download on Google play store
-https://play.google.com/store/apps/details?id=com.smartgoals.guess_master
+<a href='https://play.google.com/store/apps/details?id=com.smartgoals.guess_master'>Guess master</a>
+
 
 # Screenshots
 Splash screen
