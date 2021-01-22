@@ -4,12 +4,9 @@ A fun umber guess game developed using React native.
 In this game, user will select a number between 1 and 99.
 Phone will guess the number selected by user.
 
-# Deployment
-The app is deployed at https://expo.io/@smart-apps/projects/guess-master to test.
-
 # Download on Google play store
-<a href='https://play.google.com/store/apps/details?id=com.smartgoals.guess_master'>Guess master</a>
-
+The game can be downloaded on android phones by using the following link:
+<a href='https://play.google.com/store/apps/details?id=com.smartgoals.guess_master' target='_blank'>Guess master-Android</a>
 
 # Screenshots
 Splash screen
@@ -37,3 +34,10 @@ When phone guesses the number correctly, user will be landed on game over screen
 App will display the number of round phone took to guess user's number.
 User can start a new game from here.
 ![Alt text](/screenshots/guess_master_6.png "Game over screen")
+
+
+
+# Test on Expo
+The app is deployed at https://expo.io/@smart-apps/projects/guess-master to test.
+
+
