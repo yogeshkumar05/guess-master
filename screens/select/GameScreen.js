@@ -5,26 +5,35 @@ import {
   Text,
   Dimensions,
   ScrollView,
-  Alert
+  Alert,
+  Button
 } from 'react-native';
-import NumberContainer from '../components/NumberContainer';
-import Card from '../components/Cards';
-import defaultStyles from '../constants/defaultStyles';
-import MainButton from '../components/MainButton';
+import NumberContainer from '../../components/NumberContainer';
+import Card from '../../components/Cards';
+import defaultStyles from '../../constants/defaultStyles';
+import MainButton from '../../components/MainButton';
 import {
   Ionicons
 } from '@expo/vector-icons';
+import {
+  generateRandomNumber
+} from '../../utils/helpers';
+import Colors from '../../constants/colors';
+const {
+  secondaryColor,
+  primaryColor
+} = Colors
 
-const generateRandomNumber = (min, max, exclude) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  const randonNumber = Math.floor(Math.random() * (max - min)) + min;
-  if (randonNumber === exclude) {
-    return generateRandomNumber(min, max, exclude);
-  } else {
-    return randonNumber;
-  }
-}
+// const generateRandomNumber = (min, max, exclude) => {
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+//   const randonNumber = Math.floor(Math.random() * (max - min)) + min;
+//   if (randonNumber === exclude) {
+//     return generateRandomNumber(min, max, exclude);
+//   } else {
+//     return randonNumber;
+//   }
+// }
 
 const renderListItem = (guess, index) => (<View style={styles.listItem} key={guess + index}>
   <Text style={defaultStyles.bodyText}>#{index}</Text>
@@ -36,7 +45,8 @@ const GameScreen = props => {
 
   const {
     userChoice,
-    onGameOver
+    onGameOver,
+    onRestart
   } = props;
 
   const initialGuess = generateRandomNumber(1, 100, userChoice);
@@ -59,7 +69,9 @@ const GameScreen = props => {
     buttonContainer,
     button,
     listView,
-    list
+    list,
+    quitStyle,
+    quitText
   } = styles;
 
   const nextGuessHandler = direction => {
@@ -85,19 +97,58 @@ const GameScreen = props => {
     setPastGuesses(currentPassGuesses => [nextNumber, ...currentPassGuesses]);
   }
 
+  const restartGame = () => {
+    console.log('restartGame');
+    props.navigation.navigate('Select')
+  }
+
+  const quitHandler = () => {
+    Alert.alert(
+      'Restart game',
+      'Are you sure you want to restart the game',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => { },
+          style: 'cancel'
+        },
+        {
+          text: 'OK',
+          onPress: () => onRestart()
+        }
+      ],
+      { cancelable: false }
+    )
+  }
+
   return (
     <View style={screen}>
-      <Text style={defaultStyles.titleText}>Phone's guess</Text>
+      <View style={quitStyle}>
+        <Ionicons onPress={quitHandler} name="arrow-back-circle" size={24} color={primaryColor} />
+      </View>
+      <Text style={{color: secondaryColor, marginBottom: 5}}>You selected: {userChoice}</Text>
+
+
+      <Text style={{fontSize: 22,
+    fontWeight: 'bold', color: primaryColor}}>App guessed</Text>
       <NumberContainer>
         {currentGuess}
       </NumberContainer>
+      <Text style={{color: secondaryColor, marginTop: 10}}>Hint:</Text>
       <Card style={buttonContainer}>
-        <MainButton onPress={nextGuessHandler.bind(this, 'lower')}>
-          <Ionicons name='md-remove' size={25} color='white' />
-        </MainButton>
-        <MainButton onPress={nextGuessHandler.bind(this, 'higher')}>
-          <Ionicons name='md-add' size={25} color='white' />
-        </MainButton>
+        <View style={{display: 'flex',alignItems: 'center'}}>
+          <MainButton style={{ backgroundColor: secondaryColor }} onPress={nextGuessHandler.bind(this, 'lower')}>
+            <Ionicons name='md-remove' size={25} color='white' />
+          </MainButton>
+          <Text style={{fontWeight: 'bold', marginTop: 3}}>Lower</Text>
+        </View>
+        <View style={{display: 'flex',alignItems: 'center'}}>
+          <MainButton style={{ backgroundColor: secondaryColor }} onPress={nextGuessHandler.bind(this, 'higher')}>
+            <Ionicons name='md-add' size={25} color='white' />
+          </MainButton>
+          <Text style={{fontWeight: 'bold', marginTop: 3}}>Greater</Text>
+        </View>
+
       </Card>
       <View style={listView}>
         <ScrollView contentContainerStyle={list}>
@@ -119,8 +170,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-around',
-    marginTop: Dimensions.get('window').height > 600 ? 20 : 10,
+    marginTop: 5,
     width: '90%'
   },
   list: {
@@ -142,6 +194,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '60%'
+  },
+  quitStyle: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    width: '100%',
+    height: 25
   }
 });
 

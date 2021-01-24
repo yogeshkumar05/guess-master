@@ -7,8 +7,8 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   titleText: {
-    fontSize: 20,
-    marginVertical: 10,
+    fontSize: 22,
+    // marginVertical: 10,
     fontWeight: 'bold'
   }
 })

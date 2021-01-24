@@ -7,9 +7,13 @@ import {
   Image,
   ScrollView
 } from 'react-native';
-import defaultStyles from '../constants/defaultStyles';
-import COLORS from '../constants/colors';
-import MainButton from '../components/MainButton';
+import defaultStyles from '../../constants/defaultStyles';
+import COLORS from '../../constants/colors';
+import MainButton from '../../components/MainButton';
+const {
+  secondaryColor,
+  primaryColor
+} = COLORS
 
 const GameOverScreen = props => {
   const {
@@ -36,18 +40,18 @@ const GameOverScreen = props => {
         <Text style={titleText}> The game is over :)</Text>
         <View style={imageContainer}><Image
           style={image}
-          source={require('../assets/success.png')}
+          source={require('../../assets/success.png')}
           resizeMode='cover'
 
         />
         </View>
-        <Text style={bodyText}>Your phone took <Text style={highlight}>
+        <Text style={bodyText}>App took <Text style={highlight}>
           {guessRounds} </Text>
           rounds to guess the number <Text style={highlight}>
             {userNumber}
           </Text>
         </Text>
-        <MainButton onPress={onRestart} >
+        <MainButton style={{backgroundColor: secondaryColor}} onPress={onRestart} >
           Start new game
       </MainButton>
       </View>
@@ -75,8 +79,9 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   highlight: {
-    color: COLORS.primaryColor,
-    fontSize: 14
+    color: secondaryColor,
+    fontSize: 14,
+    fontWeight: 'bold'
   }
 });
 

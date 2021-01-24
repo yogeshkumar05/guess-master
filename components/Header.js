@@ -9,7 +9,8 @@ import COLORS from '../constants/colors';
 const Header = (props) => {
 
   const {
-    title
+    title,
+    style
   } = props;
 
   const {
@@ -18,7 +19,7 @@ const Header = (props) => {
   } = styles;
 
   return (
-    <View style={headerView}>
+    <View style={{...headerView, ...style}}>
       <Text style={headerText}>{title}</Text>
     </View>
   )
@@ -28,14 +29,14 @@ const styles = StyleSheet.create({
   headerView: {
     width: '100%',
     height: 90,
-    paddingTop: 30,
+    // paddingTop: 30,
     backgroundColor: COLORS.primaryColor,
     alignItems: 'center',
     justifyContent: 'center'
   },
   headerText: {
     color: 'white',
-    fontSize: 22,
+    fontSize: 28,
     fontWeight: 'bold'
   }
 })

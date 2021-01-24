@@ -3,8 +3,8 @@
     "name": "Guess Master",
     "slug": "guess-master",
     "owner": "smart-apps",
-    "description": "A simple number guess game in which user selects a number and the phone guesses the selected number",
-    "version": "1.0.0",
+    "description": "This is a fun and classical GUESS MY NUMBER game which the user can play with App",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -29,7 +29,7 @@
     },
     "android": {
       "package": "com.smartgoals.guess_master",
-      "versionCode": 1,
+      "versionCode": 2,
       "icon": "./assets/icon.png",
       "splash": {
         "image": "./assets/splash.png",

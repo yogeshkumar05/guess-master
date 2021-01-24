@@ -19,7 +19,7 @@
   const styles = StyleSheet.create({
     container: {
       borderWidth: 2,
-      borderColor: COLORS.secondaryColor,
+      borderColor: COLORS.primaryColor,
       padding:10,
       borderRadius:10,
       marginVertical: 10,
@@ -27,7 +27,7 @@
       justifyContent: 'center'
     },
     number: {
-      color: COLORS.secondaryColor,
+      color: COLORS.primaryColor,
       fontSize: 22
     }
   });

@@ -11,12 +11,15 @@ import {
   ScrollView,
   KeyboardAvoidingView
 } from 'react-native';
-import Card from '../components/Cards';
-import COLORS from '../constants/colors';
-import Input from '../components/Input';
-import NumberContainer from '../components/NumberContainer';
-import defaultStyles from '../constants/defaultStyles';
-import MainButton from '../components/MainButton';
+import Card from '../../components/Cards';
+import COLORS from '../../constants/colors';
+import Input from '../../components/Input';
+import NumberContainer from '../../components/NumberContainer';
+import defaultStyles from '../../constants/defaultStyles';
+import MainButton from '../../components/MainButton';
+import {
+  Ionicons
+} from '@expo/vector-icons';
 
 const StartGameScreen = (props) => {
   const {
@@ -24,7 +27,9 @@ const StartGameScreen = (props) => {
     buttonView,
     inputContainer,
     button,
-    input
+    input,
+    infoText,
+    quitStyle
   } = styles;
 
   const {
@@ -88,7 +93,7 @@ const StartGameScreen = (props) => {
       <NumberContainer>
         {selectedNumber}
       </NumberContainer>
-      <MainButton onPress={() => onStartGame(selectedNumber)}>
+      <MainButton style={{ backgroundColor: secondaryColor }} onPress={() => onStartGame(selectedNumber)}>
         Start game
       </MainButton>
     </Card>
@@ -100,8 +105,9 @@ const StartGameScreen = (props) => {
       <KeyboardAvoidingView behavior='padding' keyboardVerticalOffset={30}>
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
           <View style={screen}>
-            <Text style={defaultStyles.titleText}>Start a new game!</Text>
-            <Text style={defaultStyles.bodyText}>In this fun game, you select a number from 1 to 99 and your phone will guess it !!</Text>
+            <Text style={defaultStyles.titleText}>Select a number !!</Text>
+            <Ionicons name="happy-outline" size={80} color={secondaryColor} />
+            <Text style={infoText}>In this fun game, you select a number from 1 to 99 and the app will guess it.</Text>
             <Card style={inputContainer}>
               <Text>Select a number</Text>
               <Input
@@ -113,16 +119,20 @@ const StartGameScreen = (props) => {
               />
               <View style={buttonView}>
                 <View style={{ width: buttonWidth }}>
-                  <Button title='Reset' color={secondaryColor} onPress={resetHandler} />
+                  <Button title='Reset' color={primaryColor} onPress={resetHandler} />
                 </View>
                 <View style={{ width: buttonWidth }}>
-                  <Button title='Confirm' color={primaryColor} onPress={confirmHandler} />
+                  <Button title='Confirm' color={secondaryColor} onPress={confirmHandler} />
                 </View>
               </View>
             </Card>
             {
               confirmedOutput
             }
+            <Text style={{ marginTop: 30, fontStyle: 'italic' }}>
+            <Ionicons name="information-circle-sharp" size={25} color='black' />
+              Switch tabs at the bottom of app to guess the number selected by app.
+            </Text>
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
@@ -160,7 +170,12 @@ const styles = StyleSheet.create({
   summaryContainer: {
     marginTop: 20,
     alignItems: 'center'
-  }
+  },
+  infoText: {
+    fontSize: 20,
+    marginTop: 10,
+    marginBottom: 20
+  },
 })
 
 export default StartGameScreen;
